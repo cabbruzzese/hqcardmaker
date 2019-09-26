@@ -1,4 +1,4 @@
-# Pattern Maker
+# HQ Card Maker
 
 ## What it does
 A tool for creating Heroquest cards with images and text. Cards can be saved as PNG.
