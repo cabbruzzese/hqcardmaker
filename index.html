@@ -1,0 +1,278 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <style>
+        body {
+            background: lightseagreen;
+            color: black;
+        }
+
+        p {
+            color: black;
+        }
+
+        canvas {
+            background: lightseagreen;
+        }
+
+        div.center span.col-3 {
+            clear: none;
+            float: left;
+            width: 33%;
+            margin: 0 auto;
+            padding: 0 0 0 0;
+        }
+
+        div.center span.col-2 {
+            clear: none;
+            float: left;
+            width: 40%;
+            margin: 0 auto;
+            padding: 0 0 0 10%;
+        }
+
+        div.center {
+            padding: 20px 0px 0px 0px;
+            margin: 0 auto;
+            width: 80%;
+            clear: both;
+            float: none;
+        }
+
+        div.center-inner {
+            padding: 20px 0px 0px 0px;
+            margin: 0 auto;
+            width: 100%;
+            clear: both;
+            float: none;
+        }
+
+        div.center h1 {
+            text-align: center;
+        }
+
+        div.center h2,
+        h3,
+        h4 {
+            margin: 7px 5px 2px 20px;
+        }
+
+        div.controls-container {
+            border: solid;
+            border-color: black;
+            width: 300px;
+            min-height: 470px;
+            padding: 5px;
+        }
+
+        div.control-container {
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        div.control-container span {
+            width: 50%;
+            vertical-align: top;
+        }
+
+        input.form-text {
+            width: 220px;
+        }
+
+        input.form-file {
+            width: 240px;
+        }
+
+        input.form-wide {
+            min-width: 180px;
+        }
+
+        textarea.form-textarea {
+            min-height: 100px;
+            min-width: 220px;
+        }
+
+        input.form-number {
+            width: 30px;
+            text-align: center;
+        }
+
+        input.form-color {
+            width: 60px;
+            text-align: right;
+        }
+
+        input.form-font {
+            width: 140px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <h1>
+            Heroquest Card Creator
+        </h1>
+
+        <div class="center">
+            <span class="col-2">
+                <div class="canvas-container">
+                    <canvas id="drawingCanvas" width="300" height="470">Your browser does not support the canvas
+                        element.</canvas>
+                </div>
+            </span>
+            <span class="col-2">
+                <div class="controls-container">
+                    <h3>Text</h3>
+                    <div class="control-container">
+                        <span>Card Title</span>
+                        <span>
+                            <input class="form-text" type="text" id="titleText" />
+                        </span>
+                    </div>
+                    <div class="control-container">
+                        <span>Card Text</span>
+                        <span>
+                            <textarea class="form-textarea" id="cardText"
+                                placeholder="Insert content here..."></textarea>
+                        </span>
+                    </div>
+                    <h3>Picture Settings</h3>
+                    <div class="control-container">
+                        <span>Upload</span>
+                        <span>
+                            <input class="form-file" type="file" id="fileBlob" accept="image/png, image/jpeg" />
+                        </span>
+                    </div>
+                    <h3>Card Settings</h3>
+                    <div class="control-container">
+                        <span>Border: Color</span>
+                        <span>
+                            <input class="form-color" type="text" id="cardBorderColor" />
+                        </span>
+                        <span>Thickness</span>
+                        <span>
+                            <input class="form-number" type="text" id="cardBorderThickness" />
+                        </span>
+                    </div>
+                    <div class="control-container">
+                        <span>Card: Color</span>
+                        <span>
+                            <input class="form-color" type="text" id="cardFillColor" />
+                        </span>
+                        <span>Text: Color</span>
+                        <span>
+                            <input class="form-color" type="text" id="textColor" />
+                        </span>
+                    </div>
+                    <h3>Picture Frame Settings</h3>
+                    <div class="control-container">
+                        <span>X</span>
+                        <span>
+                            <input class="form-number" type="text" id="picX" />
+                        </span>
+                        <span>Y</span>
+                        <span>
+                            <input class="form-number" type="text" id="picY" />
+                        </span>
+                        <span>Width</span>
+                        <span>
+                            <input class="form-number" type="text" id="picWidth" />
+                        </span>
+                        <span>Height</span>
+                        <span>
+                            <input class="form-number" type="text" id="picHeight" />
+                        </span>
+                    </div>
+                    <div class="control-container">
+                        <span>Center</span>
+                        <span>
+                            <input type="checkbox" id="centerPic" checked="true" />
+                        </span>
+                        <span>Stetch</span>
+                        <span>
+                            <input type="checkbox" id="stretchPic" checked="true" />
+                        </span>
+                        <span>Offset: X</span>
+                        <span>
+                            <input type="text" class="form-number" id="picOffsetX" />
+                        </span>
+                        <span>Y</span>
+                        <span>
+                            <input type="text" class="form-number" id="picOffsetY" />
+                        </span>
+                    </div>
+                    <h3>Title Settings</h3>
+                    <div class="control-container">
+                        <span>X</span>
+                        <span>
+                            <input class="form-number" type="text" id="titleX" />
+                        </span>
+                        <span>Y</span>
+                        <span>
+                            <input class="form-number" type="text" id="titleY" />
+                        </span>
+                        <span>Font</span>
+                        <span>
+                            <input class="form-font" type="text" id="titleFont" />
+                        </span>
+                        <h3>Text Settings</h3>
+                        <span>X</span>
+                        <span>
+                            <input class="form-number" type="text" id="textX" />
+                        </span>
+                        <span>Y</span>
+                        <span>
+                            <input class="form-number" type="text" id="textY" />
+                        </span>
+                        <span>Font</span>
+                        <span>
+                            <input class="form-font" type="text" id="textFont" />
+                        </span>
+                    </div>
+                    <div class="control-container">
+                        <span>Line Width</span>
+                        <span>
+                            <input class="form-number" type="text" id="textWidth" />
+                        </span>
+                        <span>Font Height</span>
+                        <span>
+                            <input class="form-number" type="text" id="textHeight" />
+                        </span>
+                    </div>
+                    <div><br /></div>
+                    <div>
+                        <button type="button" id="resetToDefautsButton">Reset To Defaults</button>
+                    </div>
+                </div>
+            </span>
+        </div>
+
+        <div class="center-inner">
+            <span class="col-3">
+                <span>Load Card Data File: </span>
+                <span>
+                    <input class="form-file-wide" type="file" id="cardDataBlob" accept="application/json" />
+                </span>
+            </span>
+            <span class="col-3">
+                <button type="button" id="downloadImageButton">Download Image</button>
+            </span>
+            <span class="col-3">
+                <button type="button" id="downloadDataFileButton">Download Data File</button>
+            </span>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="wraptext.js"></script>
+    <script type="text/javascript" src="roundrect.js"></script>
+    <script type="text/javascript" src="utils.js"></script>
+    <script type="text/javascript" src="math2d.js"></script>
+    <script type="text/javascript" src="render.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+
+</body>
+
+</html>
