@@ -7,8 +7,7 @@ function wrapText(context, text, x, y, maxWidth, lineHeight) {
     var paragraphs = text.split('\n');
     var paragraphY = y;
 
-    for (var p = 0; p < paragraphs.length; p++)
-    {        
+    for (var p = 0; p < paragraphs.length; p++) {
         var paragraph = paragraphs[p];
         var linesWritten = wrapTextParagraph(context, paragraph, x, paragraphY, maxWidth, lineHeight);
 

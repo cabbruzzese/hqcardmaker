@@ -2,6 +2,8 @@ var c = document.getElementById("drawingCanvas");
 var dc_ctx = c.getContext("2d");
 var currentImage = null;
 var currentUrl = "";
+var currentText = "";
+var currentTokenData = null;
 
 function validFileBlob(fileBlob) {
     if (fileBlob === null || fileBlob === undefined) {
@@ -92,7 +94,12 @@ function drawText(text, font, x, y, color, isCenter, width, height) {
     if (isCenter) {
         dc_ctx.textAlign = "center";
     }
-    wrapText(dc_ctx, text, x, y, width, height);
+
+    currentText = text;
+    currentTokenData = tokenizeText(text, font, dc_ctx);
+
+    drawTokens(dc_ctx, currentTokenData, x, y, width, height);
+
     dc_ctx.restore();
 }
 
@@ -119,7 +126,7 @@ function RenderFrame(cardProperties) {
 }
 
 function StartRenderLoop(cardProperties) {
-    setInterval(RenderFrame, 33, cardProperties);
+    setInterval(RenderFrame, 198, cardProperties);
 }
 
 function GetImageDataFromRenderer() {

@@ -59,10 +59,10 @@ function downloadJsonFromObject(obj, fileName) {
  * 
  * Method from: https://stackoverflow.com/questions/34485420/how-do-you-put-an-image-file-in-a-json-object/34485762
  */
-function convertToDataURLviaCanvas(url, callback, outputFormat){
+function convertToDataURLviaCanvas(url, callback, outputFormat) {
     var img = new Image();
     img.crossOrigin = 'Anonymous';
-    img.onload = function(){
+    img.onload = function () {
         var canvas = document.createElement('CANVAS');
         var ctx = canvas.getContext('2d');
         var dataURL;
@@ -71,7 +71,7 @@ function convertToDataURLviaCanvas(url, callback, outputFormat){
         ctx.drawImage(this, 0, 0);
         dataURL = canvas.toDataURL(outputFormat);
         callback(dataURL);
-        canvas = null; 
+        canvas = null;
     };
     img.src = url;
 }
