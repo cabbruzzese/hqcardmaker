@@ -94,7 +94,7 @@ function downloadImage() {
     var link = document.createElement('a');
     link.download = cardProperties.Title + '_cardimage.png';
     link.href = GetImageDataFromRenderer();
-    link.click();
+    link.dispatchEvent(new MouseEvent(`click`, { bubbles: true, cancelable: true, view: window }));
 }
 
 function downloadCardData() {

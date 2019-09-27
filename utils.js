@@ -52,7 +52,8 @@ function downloadJsonFromObject(obj, fileName) {
     a.href = 'data:' + data;
     a.download = fileName;
     a.innerHTML = 'download JSON';
-    a.click();
+    a.dispatchEvent(new MouseEvent(`click`, { bubbles: true, cancelable: true, view: window }));
+
 }
 
 /**
